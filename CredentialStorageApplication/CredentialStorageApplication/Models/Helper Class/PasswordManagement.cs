@@ -52,7 +52,7 @@ namespace CredentialStorageApplication.Models.Helper_Class
                 }
                 else
                 {
-                    Debug.WriteLine("IMPORTANT: You're a muppet. The Key: " + key + " doesn't exist in the Appsettings file");
+                    Debug.WriteLine("IMPORTANT: You're a muppet. The Key: \"" + key + "\" doesn't exist in appSettings");
                     return "Nope. Key doesn't exist";
                 }
                 
