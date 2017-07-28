@@ -17,8 +17,10 @@ namespace CredentialStorageApplication.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your about page.";
-
+            
+            var config = System.Web.Configuration.WebConfigurationManager.AppSettings;
+            var output = config.Get("App1Password"); //Returns the value associated with the Key: "App1Password"
+            ViewBag.Message = output;
             return View();
         }
 
