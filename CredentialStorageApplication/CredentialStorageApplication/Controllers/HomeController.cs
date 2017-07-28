@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using CredentialStorageApplication.Models.Helper_Class;
 
 namespace CredentialStorageApplication.Controllers
 {
@@ -18,16 +19,25 @@ namespace CredentialStorageApplication.Controllers
         public ActionResult About()
         {
             
-            var config = System.Web.Configuration.WebConfigurationManager.AppSettings;
-            var output = config.Get("App1Password"); //Returns the value associated with the Key: "App1Password"
-            ViewBag.Message = output;
+            
+            PasswordManagement pm1 = PasswordManagement.getInstance();
+            ViewBag.Message = pm1.getValue("App1Password");
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            string suspectedPassword = "TestPassword";
+            PasswordManagement pm1 = PasswordManagement.getInstance();
+            if (pm1.getValue("Test Password") == suspectedPassword)
+            {
+                ViewBag.Message = "Password was identified successfully! \"" + pm1.getValue("Test Password") + "\" = \"" + suspectedPassword + "\"";
+            }
+            else
+            {
+                ViewBag.Message = "Password is incorrect" + pm1.getValue("Test Password") + " != " + suspectedPassword;
+            }
+            var test = pm1.getValue("Crayons");//Intentional error
             return View();
         }
     }
