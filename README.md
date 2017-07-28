@@ -2,6 +2,8 @@
 
 This asp.net webapp uses a custom config file to add keys and values to the appsettings field in the Web.config of the app. The idea is that you exclude this other file from your source control system, in order to keep it secret. 
 
+This method works automatically with Azure Publish to Webservice. Which is kind of cool.
+
 ## Private.config
 ```xml
 <?xml version="1.0"?>
